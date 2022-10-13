@@ -20,7 +20,7 @@ const Login = () => {
                 <h2 className='text-4xl font-bold tracking-tight text-center text-white'>Sign In</h2>
                 <div className='flex flex-col py-2 text-gray-400'>
                     <label>Username</label>
-                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' type="text" />
+                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' type="Username" />
                 </div>
                 <div className='flex flex-col py-2 text-gray-400'>
                     <label>Password</label>
