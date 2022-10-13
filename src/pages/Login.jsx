@@ -2,7 +2,11 @@ import React from 'react'
 import loginImg from '../data/logo.png'
 import {auth} from './backend/fetchAPI'
 
-auth("testUsername", "testPassword")
+const loginUsername = ""
+const loginPassword = ""
+
+
+auth(loginUsername, loginPassword)
 
 const Login = () => {
   return (
