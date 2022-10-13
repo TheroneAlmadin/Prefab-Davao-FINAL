@@ -1,16 +1,37 @@
-import React from 'react'
+import {useState} from 'react'
 import loginImg from '../data/logo.png'
 import {auth, allEmployees, employeeDetails} from './backend/fetchAPI'
 
-const loginUsername = "rian"
-const loginPassword = "goodbye"
-
-//auth(loginUsername, loginPassword)
-//allEmployees()
-employeeDetails("00000")
-
 
 const Login = () => {
+  const [inputUsername, setUsername] = useState('')
+  const [inputPassword, setPassword] = useState('')
+
+  const usernameChange = event =>{
+    setUsername(event.target.value)
+
+  };
+
+  const passwordChange = event =>{
+    setPassword(event.target.value)
+  }
+
+  const callAuth = event =>{
+    event.preventDefault();
+    var response
+    auth(inputUsername, inputPassword).then(function(result){
+        let entries = Object.entries(result)
+        response = entries[0][1]
+        console.log(response)
+
+
+        //PUT CODE HERE ANTON   
+    
+    })
+
+    
+  }
+
   return (
     <div style={{backgroundColor: '#323131'}}>
     <div className='grid w-full h-screen grid-cols-1 bg-neutral-700 center sm:grid-cols-2'>
@@ -26,23 +47,29 @@ const Login = () => {
                 <h2 className='text-4xl font-bold tracking-tight text-center text-white'>Sign In</h2>
                 <div className='flex flex-col py-2 text-gray-400'>
                     <label>Username</label>
-                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' type="Username" />
+                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' onChange={usernameChange} type="text" id="inputUsername" name = "inputUsername" value={inputUsername}/>
                 </div>
                 <div className='flex flex-col py-2 text-gray-400'>
                     <label>Password</label>
-                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' type="Password" />
+                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' onChange={passwordChange} type="text" id="inputPassword" name = "inputPassword" value={inputPassword}/>
                 </div>
                 <div className='flex justify-between py-2 text-gray-400'>
                     <p className='flex items-center'><input className='mr-2' type ="checkbox" /> Remember Me</p>
                     <p>Forgot Password?</p>
                 </div>
                  
-                <button className='w-full py-2 my-5 bg-yellow-500'>Sign In</button>
+                <button className='w-full py-2 my-5 bg-yellow-500' onClick={callAuth}>Sign In</button>
+
+
             </form>
         </div>
     </div>
     </div>
   )
 }
+
+const loginUsername = "rian"
+const loginPassword = "goodbye"
+
 
 export default Login
