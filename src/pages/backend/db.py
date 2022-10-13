@@ -150,6 +150,27 @@ class db():
         }
         log_records_collection.insert_one(doc_login)
 
+    @backendAPI.route('/allEmployeesDetails', methods = ["POST", "GET"])
+    @cross_origin(supports_credentials=True)
+    def allEmployeeDetails():
+        with backendAPI.app_context(): 
+            employees = {}
+            count = 0
+            found_employees = employees_collection.find({},{ '_id': False})
+            for x in found_employees:
+                employees[count] =x
+                count += 1
+            
+            return jsonify(employees)
+    
+    @backendAPI.route('/employeeDetails/<employeeID>', methods = ["POST", "GET"])
+    @cross_origin(supports_credentials= True)
+    def employeeDetails(employeeID):
+        with backendAPI.app_context():
+            foundEmployee = employees_collection.find_one({"employee_id": employeeID}, {"_id": 0})
+            
+            return jsonify(foundEmployee)
+    
 
 if __name__ == "__main__":
     backendAPI.run(debug=True)
