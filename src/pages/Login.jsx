@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import loginImg from '../data/logo.png'
 import {auth} from './backend/fetchAPI'
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -35,7 +35,6 @@ const Login = () => {
     
     })
 
-    
   }
 
   return (
@@ -57,7 +56,7 @@ const Login = () => {
                 </div>
                 <div className='flex flex-col py-2 text-gray-400'>
                     <label>Password</label>
-                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' onChange={passwordChange} type="text" id="inputPassword" name = "inputPassword" value={inputPassword}/>
+                    <input className='p-2 mt-2 rounded-lg focus:border-blue-500 focus:outline-none' onChange={passwordChange} type="password" id="inputPassword" name = "inputPassword" value={inputPassword}/>
                 </div>
                 <div className='flex justify-between py-2 text-gray-400'>
                     <p className='flex items-center'><input className='mr-2' type ="checkbox" /> Remember Me</p>
