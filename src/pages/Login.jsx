@@ -1,18 +1,19 @@
 import {useState} from 'react'
 import loginImg from '../data/logo.png'
-import {auth, allEmployees, employeeDetails} from './backend/fetchAPI'
+import {auth} from './backend/fetchAPI'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const [inputUsername, setUsername] = useState('')
   const [inputPassword, setPassword] = useState('')
-
+  const navigate = useNavigate();
   const usernameChange = event =>{
     setUsername(event.target.value)
 
   };
 
-  const passwordChange = event =>{
+  const passwordChange = event =>{  
     setPassword(event.target.value)
   }
 
@@ -22,10 +23,15 @@ const Login = () => {
     auth(inputUsername, inputPassword).then(function(result){
         let entries = Object.entries(result)
         response = entries[0][1]
-        console.log(response)
 
-
-        //PUT CODE HERE ANTON   
+        if (response == "True"){
+            navigate("/Homepage")
+        } else if (response == "False"){
+            console.log("Password is incorrect")
+        } else {
+            console.log("Username is not found in database")
+        }
+        
     
     })
 
@@ -57,7 +63,7 @@ const Login = () => {
                     <p className='flex items-center'><input className='mr-2' type ="checkbox" /> Remember Me</p>
                     <p>Forgot Password?</p>
                 </div>
-                 
+
                 <button className='w-full py-2 my-5 bg-yellow-500' onClick={callAuth}>Sign In</button>
 
 

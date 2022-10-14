@@ -2,10 +2,15 @@
 import './App.css';
 import './index.css'
 import Login from './pages/Login';
+import Homepage from './pages/Homepage';
+import { Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <Login/>
+      <Routes>
+        <Route path="/" element ={<Login />}/>
+        <Route path="/Homepage" element={<Homepage />}/>
+      </Routes>
   );
 }
 
