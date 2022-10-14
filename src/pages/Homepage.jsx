@@ -66,7 +66,7 @@ const Homepage = () => {
             <Navbar />
             </div>
           </div>
-
+            <Footer />
         </div>      
     </div>
 
