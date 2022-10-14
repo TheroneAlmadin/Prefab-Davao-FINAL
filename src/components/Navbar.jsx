@@ -13,11 +13,11 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
       type="button"
       onClick={() => customFunc()}
       style={{ color }}
-      className="relative text-xl rounded-full p-3 hover:bg-light-gray"
+      className="relative p-3 text-xl rounded-full hover:bg-light-gray"
     >
       <span
         style={{ background: dotColor }}
-        className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
+        className="absolute inline-flex w-2 h-2 rounded-full right-2 top-2"
       />
       {icon}
     </button>
@@ -56,7 +56,7 @@ const Navbar = () => {
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
-    <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
+    <div className="relative flex justify-between p-2 md:ml-6 md:mr-6">
       <NavButton
         title="Menu"
         customFunc={handleActiveMenu}
@@ -66,17 +66,17 @@ const Navbar = () => {
       <div className="flex">
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
-            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+            className="flex items-center gap-2 p-1 rounded-lg cursor-pointer hover:bg-light-gray"
             onClick={() => handleClick('userProfile')}
           >
             <img
-              className="rounded-full w-8 h-8"
+              className="w-8 h-8 rounded-full"
               src={avatar}
               alt="user-profile"
             />
             <p>
               <span className="text-gray-400 text-14">Hi,</span>{' '}
-              <span className="text-gray-400 font-bold ml-1 text-14">
+              <span className="ml-1 font-bold text-gray-400 text-14">
                 Antonio
               </span>
             </p>
